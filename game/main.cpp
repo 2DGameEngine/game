@@ -7,8 +7,9 @@ const int SCREEN_HEIGHT = 480;
 int main( int argc, char* args[] )
 {
 	SDL_Window* window = NULL;
-	
+	int running;
 	SDL_Surface* screenSurface = NULL;
+	SDL_Event event;
 
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
@@ -23,10 +24,16 @@ int main( int argc, char* args[] )
 		}
 		else
 		{
-			 SDL_Delay(5000);
+			running=1;
+			 while(running){
+				 while(SDL_PollEvent(&event)){
+					if(event.type == SDL_QUIT){
+						running=0;
+					}
+				}
+			}
 		}
 	}
-
 	SDL_DestroyWindow( window );
 
 	SDL_Quit();
