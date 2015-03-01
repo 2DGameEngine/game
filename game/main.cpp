@@ -2,17 +2,18 @@
 #include <stdio.h>
 #include <Windows.h>
 #include "FileManager.h"
+#include <Awesomium/WebCore.h>
+
 using namespace std;
+
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+using namespace Awesomium;
+
 int main( int argc, char* args[] )
 {
-	UINT32 frameStart,frameTime;
-	AllocConsole();
-	freopen("CON","w",stdout);
-
-	SDL_Window* window = NULL;
+	/*SDL_Window* window = NULL;
 	int running;
 	SDL_Surface* screenSurface = NULL;
 	SDL_Event event;
@@ -48,7 +49,12 @@ int main( int argc, char* args[] )
 	}
 	SDL_DestroyWindow( window );
 
-	SDL_Quit();
+	SDL_Quit();*/
+
+	WebCore* web_core = WebCore::Initialize(WebConfig());
+
+
+	WebCore::Shutdown();
 
 	return 0;
 }
